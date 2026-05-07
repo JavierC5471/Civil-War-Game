@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Civil War Map Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <h1>Civil War Geography Challenge (U.S. Map of 1860)</h1>
+        
+        <div id="ui-header">
+            <div id="timer">Time: 00:00</div>
+            <div id="score-board">Score: <span id="score">0</span></div>
+        </div>
+
+        <div id="quiz-area">
+            <button id="start-btn" onclick="startGame()">Start Game</button>
+            <p id="prompt" class="hidden"></p>
+            <p id="feedback" class="hidden"></p>
+            <div id="options" class="hidden">
+                <p>Select the correct historical status:</p>
+                <button onclick="checkStatus('seceded-before')">Seceded before April 15, 1861</button>
+                <button onclick="checkStatus('seceded-after')">Seceded after April 15, 1861</button>
+                <button onclick="checkStatus('union-slavery')">Union State (Permitted Slavery)</button>
+                <button onclick="checkStatus('union-free')">Union State (Banned Slavery)</button>
+                <button onclick="checkStatus('territory')">Territory</button>
+            </div>
+        </div>
+
+        <div id="map-wrapper">
+            <img src="assets/BlackAndWhiteMap.png" id="game-map" usemap="#civil-war-map">
+
+            <map name="civil-war-map">
+                <area data-state="Washington Territory" alt="Washington Territory" href="#" coords="223,59,217,122,235,130,241,147,365,169,374,184,349,217,354,223,338,283,535,321,517,307,494,242,443,236,427,191,462,192,468,155,448,100,270,53" shape="poly">
+                <area data-state="Oregon" alt="Oregon" href="#" coords="217,127,172,245,335,285,349,224,342,214,371,185,361,170,241,154" shape="poly">
+                <area data-state="California" alt="California" href="#" coords="176,250,156,339,196,494,266,566,331,578,351,527,246,361,267,275" shape="poly">
+                <area data-state="New Mexico Territory" alt="New Mexico Territory" href="#" coords="296,437,556,484,534,458,646,463,631,638,540,633,495,633,491,647,418,640,328,588,356,527" shape="poly">
+                <area data-state="Utah Territory" alt="Utah Territory" href="#" coords="268,275,517,322,556,343,567,382,585,376,574,413,577,436,535,454,548,480,296,433,250,361" shape="poly">
+                <area data-state="Nebraska Territory" alt="Nebraska Territory" href="#" coords="450,98,675,131,679,163,711,177,714,256,739,277,766,314,811,324,834,400,592,390,581,366,570,375,551,336,528,325,542,321,522,306,492,238,444,230,436,195,466,192,470,152" shape="poly">
+                <area data-state="Unorganized Territory" alt="Unorganized Territory" href="#" coords="678,129,793,134,804,225,804,238,811,245,807,317,764,308,741,271,715,253,711,177,679,162" shape="poly">
+                <area data-state="Minnesota" alt="Minnesota" href="#" coords="797,131,809,242,812,293,927,293,892,259,885,225,902,216,899,198,956,152,851,140,844,122,836,134" shape="poly">
+                <area data-state="Wisconsin" alt="Wisconsin" href="#" coords="902,199,905,214,888,227,894,259,927,292,942,318,1007,317,1021,231,1003,239,992,213,945,202,930,191" shape="poly">
+                <area data-state="Michigan" alt="Michigan" href="#" coords="1036,339,1111,328,1130,300,1116,259,1087,199,1051,181,974,147,932,185,991,210,1000,230,1024,228" shape="poly">
+                <area data-state="Iowa" alt="Iowa" href="#" coords="809,296,928,296,957,333,953,353,937,357,928,390,914,382,833,382" shape="poly">
+                <area data-state="Missouri" alt="Missouri" href="#" coords="833,386,923,387,949,426,989,496,978,519,963,524,968,509,855,508,856,429" shape="poly">
+                <area data-state="Kansas Territory" alt="Kansas Territory" href="#" coords="852,491,854,430,834,402,591,390,575,412,578,436,544,452,643,462,646,485,754,494" shape="poly">
+                <area data-state="Neutral Strip" alt="Neutral Strip" href="#" coords="647,490,717,509" shape="rect">
+                <area data-state="Indian Territory" alt="Indian Territory" href="#" coords="721,492,851,498,859,596,841,589,812,596,719,567" shape="poly">
+                <area data-state="Arkansas" alt="Arkansas" href="#" coords="856,514,964,512,960,524,974,523,946,611,873,617,873,600,862,599" shape="poly">
+                <area data-state="Texas" alt="Texas" href="#" coords="646,506,721,512,717,567,802,595,841,591,869,602,872,649,880,714,790,768,776,788,786,831,733,815,700,755,671,714,645,705,623,730,587,708,574,673,544,643,504,636,631,639" shape="poly">
+                <area data-state="Louisiana" alt="Louisiana" href="#" coords="873,620,943,618,950,632,937,675,982,675,991,696,1006,730,880,715,885,673" shape="poly">
+                <area data-state="Mississippi" alt="Mississippi" href="#" coords="1022,689,993,694,985,676,939,668,953,631,948,610,968,553,1017,545" shape="poly">
+                <area data-state="Alabama" alt="Alabama" href="#" coords="1025,687,1051,687,1046,671,1111,660,1111,622,1083,543,1022,548" shape="poly">
+                <area data-state="Georgia" alt="Georgia" href="#" coords="1116,669,1197,669,1195,656,1210,657,1219,615,1145,541,1086,542,1112,618" shape="poly">
+                <area data-state="Florida" alt="Florida" href="#" coords="1049,675,1053,689,1100,691,1115,701,1141,685,1177,709,1186,745,1246,819,1226,844,1259,837,1274,815,1269,761,1237,709,1213,658,1198,658,1198,672,1112,665" shape="poly">
+                <area data-state="South Carolina" alt="South Carolina" href="#" coords="1220,611,1269,552,1237,531,1209,532,1201,524,1162,526,1148,538" shape="poly">
+                <area data-state="North Carolina" alt="North Carolina" href="#" coords="1271,550,1287,549,1346,490,1321,456,1179,480,1119,532,1202,521,1235,527" shape="poly">
+                <area data-state="Tennessee" alt="Tennessee" href="#" coords="971,546,985,508,1020,499,1170,483,1114,541" shape="poly">
+                <area data-state="Kentucky" alt="Kentucky" href="#" coords="989,503,992,483,1006,484,1017,465,1067,451,1093,416,1105,423,1141,425,1165,456,1139,480" shape="poly">
+                <area data-state="Illinois" alt="Illinois" href="#" coords="950,322,1006,318,1018,342,1025,433,1014,461,1006,478,996,480,988,491,928,389,938,361,956,354,960,332" shape="poly">
+                <area data-state=Indiana alt="Indiana" href="" coords="1015,459,1067,444,1090,413,1078,336,1021,343,1026,431" shape="poly">
+                <area data-state="Ohio" alt="Ohio" href="#" coords="1082,339,1111,332,1129,342,1177,317,1184,369,1168,396,1152,423,1147,429,1140,420,1104,420,1093,415" shape="poly">
+                <area data-state="Virginia" alt="Virginia" href="#" coords="1143,481,1166,458,1151,430,1187,368,1190,382,1215,379,1215,393,1231,380,1244,375,1278,393,1298,415,1318,456" shape="poly">
+                <area data-state="Pennsylvania" alt="Pennsylvania" href="#" coords="1195,306,1179,317,1192,379,1299,362,1323,343,1309,328,1314,308,1298,290,1204,311" shape="poly">
+                <area data-state="Maryland" alt="Maryland" href="#" coords="1216,386,1216,375,1244,373,1300,362,1310,398,1331,394,1316,434,1278,386,1251,369" shape="poly">
+                <area data-state="Delaware" alt="Delaware" href="#" coords="1328,390,1314,391,1303,361" shape="poly">
+                <area data-state="New Jersey" alt="New Jersey" href="#" coords="1329,382,1307,362,1325,343,1310,331,1316,307,1334,318,1341,336,1339,361" shape="poly">
+                <area data-state="New York" alt="New York" href="#" coords="1198,304,1213,283,1204,271,1233,264,1267,252,1262,234,1282,203,1321,196,1336,260,1345,307,1382,303,1341,326,1332,313,1311,304,1296,286,1205,308" shape="poly">
+                <area data-state="Connecticut" alt="Connecticut" href="#" coords="1346,304,1382,290,1376,274,1345,281" shape="poly">
+                <area data-state="Rhode Island" alt="Rhode Island" href="#" coords="1392,288,1382,292,1378,275,1388,271" shape="poly">
+                <area data-state="Massachusetts" alt="Massachusetts" href="#" coords="1338,259,1385,250,1393,242,1425,268,1422,285,1408,285,1392,285,1386,270,1342,277" shape="poly">
+                <area data-state="Vermont" alt="Vermont" href="#" coords="1323,195,1361,187,1356,206,1353,252,1336,254" shape="poly">
+                <area data-state="New Hampshire" alt="New Hampshire" href="#" coords="1367,174,1392,236,1385,246,1354,252,1360,206" shape="poly">
+                <area data-state="Maine" alt="Maine" href="#" coords="1393,235,1370,173,1394,98,1422,102,1461,162" shape="poly">
+            </map>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            imageMapResize();
+        });
+    </script>
+</body>
+</html>

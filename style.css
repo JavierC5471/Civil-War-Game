@@ -1,0 +1,73 @@
+body { 
+    font-family: 'Georgia', serif; 
+    background-color: #f4ece1; 
+    text-align: center; 
+    color: #3e2723;
+}
+
+#map-wrapper {
+    width: 100%;
+    max-width: 1566px; 
+    margin: 0 auto;
+    position: relative;
+}
+
+#game-map {
+    width: 100%; 
+    height: auto;
+    display: block;
+}
+
+area {
+    cursor: pointer; 
+}
+
+#quiz-area {
+    min-height: 120px; 
+    margin-bottom: 10px;
+}
+
+.hidden { display: none; }
+
+button {
+    padding: 12px 24px;
+    margin: 8px;
+    cursor: pointer;
+    background-color: #8d6e63;
+    color: white;
+    border: 2px solid #5d4037;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+button:hover { 
+    background-color: #5d4037;
+    transform: translateY(-2px);
+}
+
+#score-board {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+#ui-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #5d4037;
+    color: #f4ece1;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+#timer { font-family: monospace; font-size: 1.5rem; }
+
+#start-btn {
+    background-color: #2e7d32;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+}
+
+#start-btn:hover { background-color: #1b5e20; }
